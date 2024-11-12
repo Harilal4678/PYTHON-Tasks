@@ -1,17 +1,40 @@
-
-def find_maximum(numbers):
-    if not numbers:  
-        return None
+class Bank:
+    def __init__(self, bank_name, base_rate):
+        self.bank_name = bank_name
+        self.base_rate = base_rate 
     
-    maximum = numbers[0]  
-    for num in numbers:
-        if num > maximum:
-            maximum = num  
-    return maximum
+    def calculate_interest(self, principal, years):
+        return (principal * self.base_rate * years) / 100
 
-# Example usage
-numbers_list = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
-print("The maximum number is:", find_maximum(numbers_list))
+
+class Customer(Bank):
+    def __init__(self, name, bank_name, base_rate, loan_amount, loan_term):
+        super().__init__(bank_name, base_rate)
+        self.name = name
+        self.loan_amount = loan_amount
+        self.loan_term = loan_term 
+
+    def get_interest_rate(self):
+        return self.calculate_interest(self.loan_amount, self.loan_term)
+
+    def display_details(self):
+        interest = self.get_interest_rate()
+        print(f"Customer Name: {self.name}")
+        print(f"Bank: {self.bank_name}")
+        print(f"Loan Amount: {self.loan_amount}")
+        print(f"Loan Term: {self.loan_term} years")
+        print(f"Base Interest Rate: {self.base_rate}%")
+        print(f"Total Interest to be Paid: {interest:.2f}")
+
+
+
+customer = Customer("Vini", " State Bank of India", 5.0, 10000, 3)
+customer.display_details()
+
+
+
+
+
 
 
 
