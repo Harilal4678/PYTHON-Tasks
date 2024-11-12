@@ -1,0 +1,56 @@
+class employee:
+    def __init__(self,name,id,salary):
+        self.name=name
+        self.id=id
+        self.salary=salary
+    def method(self):
+        print("Name:",self.name)
+        print("id",self.id)
+        print("salary",self.salary)
+
+
+class manager(employee):
+    def __init__(self, performance,salary):
+        self.performance=performance
+        self.salary=salary
+
+    def calculation(self):
+        if self.performance == "low":
+            return self.salary*1.10
+        elif self.performance == "medium":
+            return self.salary*1.15
+        else: 
+            self.performance == "high"
+            return self.salary*1.20
+class devoloper(employee):
+    def __init__(self, performance,salary):
+        self.performance=performance
+        self.salary=salary
+
+    def calculation(self):
+        if self.performance == "low":
+            return self.salary*1.08
+        elif self.performance == "medium":
+            return self.salary*1.13
+        else:
+            self.performance == "high"
+            return self.salary*1.18
+        
+name=input("enter your name")
+id=input("enter your id")
+salary=int(input("enter your salary"))
+desg=input("enter your designation")
+emp=employee(name,id,salary)
+emp.method()
+performance=input("enter your performace level")
+if desg=="manager":
+    man=manager(performance,salary)
+    print(f"salary bonused is{man.calculation()}")
+else:
+    dev=devoloper(performance,salary)
+    print(f"salry bonused is{dev.calculation()}")
+
+
+
+
+
